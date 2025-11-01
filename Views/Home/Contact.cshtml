@@ -1,0 +1,41 @@
+﻿@model EmailFormApp.Models.ContactModel
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="max-w-4xl mx-auto mt-12 p-6 bg-white shadow-md rounded-lg">
+    <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8">@ViewData["Title"]</h2>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info mb-4 p-4 text-green-600 bg-green-100 rounded">
+            @ViewBag.Message
+        </div>
+    }
+
+    <form method="post" action="@Url.Action("SendEmail", "Home")" class="space-y-6">
+        <!-- Name -->
+        <div class="form-group">
+            <label for="Name" class="block text-sm font-medium text-gray-700">Your Name</label>
+            <input type="text" id="Name" name="Name" class="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="Email" class="block text-sm font-medium text-gray-700">Your Email</label>
+            <input type="email" id="Email" name="Email" class="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required />
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+            <label for="Message" class="block text-sm font-medium text-gray-700">Your Message</label>
+            <textarea id="Message" name="Message" class="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" rows="4" required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" class="w-full py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Send Message</button>
+        </div>
+    </form>
+</div>
